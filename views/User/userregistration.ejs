@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <%- include('./common/head') %>
+</head>
+<style>
+    @import url("https://fonts.googleapis.com/css?family=Open+Sans:300");
+* {
+  font-family: 'Open Sans', sans-serif;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+ 
+  background-repeat: no-repeat;
+}
+
+.signupSection {
+  /* background: url("https://source.unsplash.com/TV2gg2kZD1o/1600x800"); */
+  background-repeat: no-repeat;
+  position: absolute;
+  top: 60%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 1000px;
+  height:700px;
+  text-align: center;
+  display: flex;
+  color: white;
+  box-shadow: 3px 10px 20px 5px rgba(0, 0, 0, .5);
+}
+
+.info {
+  width: 180%;
+
+  padding: 30px 0;
+  
+  background: url("https://source.unsplash.com/three-person-pointing-the-silver-laptop-computer-2FPjlAyMQTA");
+  background-size: cover;
+  border-right: 5px solid rgba(30, 30, 30, .8);
+  h2 {
+    padding-top: 30px;
+    font-weight: 300;
+  }
+  p {
+    font-size: 18px;
+  }
+  .icon {
+    font-size: 8em;
+    padding: 20px 0;
+    color: rgba(10, 180, 180, 1);
+  }
+}
+
+.signupForm {
+  width: 100%;
+  padding:  0;
+  background: rgba(249, 249, 249, 0.8);
+  transition: .2s;
+  
+  h2 {
+    font-weight: 800;
+    color: blue;
+  }
+}
+
+.inputFields {
+  margin: 15px 0;
+  font-size: 16px;
+  padding: 10px;
+  width: 250px;
+  border: 1px solid rgba(10, 180, 180, 1);
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  background: rgba(20, 20, 20, .2);
+  color: rgb(14, 14, 13);
+  outline: none;
+}
+
+.noBullet {
+  list-style-type: none;
+  padding: 0;
+}
+
+#join-btn {
+  border: 1px solid rgba(10, 180, 180, 1);
+  background: rgba(20, 20, 20, .6);
+  font-size: 18px;
+  color: white;
+  margin-top: 20px;
+  padding: 10px 50px;
+  cursor: pointer;
+  transition: .4s;
+  &:hover {
+    background: rgba(20, 20, 20, .8);
+    padding: 10px 80px;
+  }
+}
+
+
+</style>
+
+<body>
+
+    <p style="color: black; text-align: center; font-size: 40px;">Welcome to JobNestHUb</p> 
+    <p style="color:rgb(68, 132, 4); text-align: center; font-size: 20px;">Explore opportunities, discover innovation, and embark on a journey of possibilities with us.</p> 
+    <br><br>
+    <div class="signupSection">
+        <div class="info">
+         
+          <i class="icon ion-ios-ionic-outline" aria-hidden="true"></i>
+          
+        </div>
+        <form action="/createRegistration" method="post" class="signupForm" name="signupform">
+          <h2 style="color:rgb(21, 41, 1);">Sign Up </h2>
+          <ul class="noBullet">
+            <li>
+              <label for="username"></label>
+              <input type="text" class="inputFields" id="username" name="name" placeholder="Username" value="" oninput="return userNameValidation(this.value)" required/>
+            </li>
+            <li>
+              <label for="Phone"></label>
+              <input type="text" class="inputFields" id="username" name="phone" placeholder="phone" value="" oninput="return userNameValidation(this.value)" required/>
+            </li>
+            <li>
+              <label for="password"></label>
+              <input type="password" class="inputFields" id="password" name="password" placeholder="Password" value="" oninput="return passwordValidation(this.value)" required/>
+            </li>
+            <li>
+                <label for="password"></label>
+                <input type="password" class="inputFields" id="password" name="confirmPassword" placeholder="confirm Password" value="" oninput="return passwordValidation(this.value)" required/>
+              </li>
+            <li>
+              <label for="email"></label>
+              <input type="email" class="inputFields" id="email" name="email" placeholder="Email" value="" required/>
+            </li>
+            <li>
+                <label for="country"></label>
+                <select id="country" name="role" class="inputFields" required>
+                  <option value="" disabled selected>Select your role</option>
+                  <option value="employee" >employee</option>
+                  <option value="user" >user</option>
+                 
+                  <!-- Add more options as needed -->
+                </select>
+              </li>
+            <li id="center-btn">
+              <input type="submit" id="join-btn" name="Submit" alt="Submit" value="Submit">
+            </li>
+            <br>
+          <h4 style="font-size: 14px;">if you already have an account <a href="/userlogin">click here</a></h4>  
+          </ul>
+        </form>
+      </div>
+</body>
+</html>

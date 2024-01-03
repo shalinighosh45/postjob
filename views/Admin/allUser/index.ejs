@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <%- include('../layout/head.ejs') %>
+</head>
+<body class="hold-transition dark-mode sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
+  <div class="wrapper">
+    <!-- Preloader -->
+    <div class="preloader flex-column justify-content-center align-items-center">
+      <img class="animation__wobble" src="/dist/img/AdminLTELogo.png" alt="AdminLTELogo" height="60" width="60" />
+    </div>
+
+    <!-- Navbar -->
+    <%- include('../layout/nav.ejs') %>
+
+    <!-- Main Sidebar Container -->
+    <%- include('../layout/sidebar.ejs') %>
+
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+      <!-- Content Header (Page header) -->
+      <div class="content-header">
+        <div class="container-fluid">
+          <div class="row mb-2">
+            <div class="col-sm-6">
+              <h1 class="m-0">Dashboard</h1>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Main content -->
+      <section class="content">
+        <div class="container-fluid">
+          <div class="card-body p-0">
+            <% if(users && users.length > 0){ %>
+              <!-- Table for displaying user data -->
+              <table class="table table-striped">
+                <thead>
+                  <tr>
+                    <th style="width: 10px">ID</th>
+                    <th>NAME</th>
+                    <th>EMAIL</th>
+                    <th>PHONE</th>
+                    <th>ROLE</th>
+                    <!-- <th>STATUS</th> -->
+                    
+                  </tr>
+                </thead>
+                <tbody>
+                  <% let id=0 %>
+                  <% for(let user of users){ %>
+                    <tr class="">
+                      <td><%= ++id %></td>
+                      <td><%= user?.name %></td>
+                      <td><div class=""><%= user?.email %></div></td>
+                      <td><%= user?.phone ? user?.phone : 'xxxxxxxxxx' %></td>
+                      <td><%= user?.role %></td>
+                      <!-- <td>
+                        <a href="/admin/activate-user/<%= user._id %>" class="<%= user.isActive ? 'bg-danger' : 'bg-success' %> text-center btn text-xs">
+                          <%= user?.isActive ? "Disable" : "Active" %>
+                        </a>
+                      </td> -->
+                    </tr>
+                  <% } %>
+                </tbody>
+              </table>
+            <% } else { %>
+              <!-- Display message if no user data is available -->
+              <h3 class="d-flex justify-content-center align-content-center my-2 py-2">No data found!</h3>
+            <% } %>
+          </div>
+        </div>
+      </section>
+      <!-- /.content -->
+    </div>
+    <!-- /.content-wrapper -->
+
+    <!-- Control Sidebar -->
+    <aside class="control-sidebar control-sidebar-dark">
+      <!-- Control sidebar content goes here -->
+    </aside>
+
+    <!-- Main Footer -->
+    <%- include('../layout/footer.ejs') %>
+  </div>
+</body>
+</html>

@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('../layout/head.ejs')%>
+
+  <body class="hold-transition dark-mode sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
+    <div class="wrapper">
+
+      <!-- Preloader -->
+      <div class="preloader flex-column justify-content-center align-items-center">
+        <img class="animation__wobble" src="/dist/img/AdminLTELogo.png" alt="AdminLTELogo" height="60" width="60">
+      </div>
+
+      <!-- Navbar -->
+      <%- include('../layout/nav.ejs')%>
+        <!-- /.navbar -->
+
+        <!-- Main Sidebar Container -->
+        <%- include('../layout/sidebar.ejs')%>
+
+          <!-- Content Wrapper. Contains page content -->
+          <div class="content-wrapper">
+            <!-- Content Header (Page header) -->
+            <div class="content-header">
+              <div class="container-fluid">
+                <div class="row mb-2">
+                  <div class="col-sm-6">
+                    <h3 class="m-0">Banner</h3>
+                  </div><!-- /.col -->
+                  <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-right">
+                      <li class="breadcrumb-item"><a href="#">Home</a></li>
+                      <li class="breadcrumb-item active">banner</li>
+                    </ol>
+                  </div><!-- /.col -->
+                </div><!-- /.row -->
+              </div><!-- /.container-fluid -->
+            </div>
+            <!-- /.content-header -->
+
+            <!-- Main content -->
+            <section class="content">
+              <div class="container-fluid">
+                <!-- /.row -->
+                <div class="row">
+                  <div class="col-md-8">
+                    <table class="table">
+                      <thead class="thead-dark">
+                        <tr>
+                          <th scope="col">#</th>
+                          <th scope="col">Title</th>
+                          <th scope="col">Sub Title</th>
+                          <th scope="col">para1</th>
+                          <th scope="col">para2</th>
+                          <th scope="col">para3</th>
+                          <th scope="col">Image1</th>
+                          <th scope="col">Image2</th>
+                          <th scope="col">Image3</th>
+                          <th scope="col">Image4</th>
+                          <th colspan="2">Action</th>
+
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <% for(let datas of aboutdata) {%>
+                          <tr>
+                            <th scope="row">1</th>
+                            <td>
+                              <%= datas.title %>
+                            </td>
+                            <td>
+                              <%= datas.subtitle %>
+                            </td>
+                            <td>
+                              <%= datas.para1 %>
+                            </td>
+
+                            <td>
+                              <%= datas.para2 %>
+                            </td>
+                            <td>
+                              <%= datas.para3 %>
+                            </td>
+                            <td><img src="/<%= datas.imageone %>" alt="img" width="50px" height="50px"></td>
+                            <td><img src="/<%= datas.imagetwo %>" alt="img" width="50px" height="50px"></td>
+                            <td><img src="/<%= datas.imagethree %>" alt="img" width="50px" height="50px"></td>
+                            <td><img src="/<%= datas.imagefour %>" alt="img" width="50px" height="50px"></td>
+                            <td><a href="/admin/aboutdel/<%= datas._id %>" class="btn btn-danger">delete</a></td>
+                            <td><a href="" class="btn btn-info">Update</a></td>
+                          </tr>
+                          <% } %>
+
+                      </tbody>
+                    </table>
+
+
+
+
+
+                  </div>
+                  <br>
+
+                  <div class="col-md-8">
+                    <h3>Create Banner</h3>
+                    <form action="/admin/createabout" method="post" enctype="multipart/form-data">
+                      <div class="form-group">
+                        <label for="exampleInputEmail1">Title</label>
+                        <input type="text" class="form-control" id="exampleInputEmail1" name="title">
+
+                      </div>
+                      <div class="form-group">
+                        <label for="exampleInputPassword1">Sub Title</label>
+                        <input type="text" class="form-control" id="exampleInputPassword1" name="subtitle">
+                      </div>
+                      <div class="form-group">
+                        <label for="exampleInputPassword1">para1 title</label>
+                        <input type="text" class="form-control" id="exampleInputPassword1" name="para1">
+                      </div>
+                      <div class="form-group">
+                        <label for="exampleInputPassword1">para2 Title</label>
+                        <input type="text" class="form-control" id="exampleInputPassword1" name="para2">
+                      </div>
+                      <div class="form-group">
+                        <label for="exampleInputPassword1">para3 Title</label>
+                        <input type="text" class="form-control" id="exampleInputPassword1" name="para3">
+                      </div>
+
+                      <div class="form-group">
+                        <label for="exampleInputPassword1">para1 image</label>
+                        <input type="file" class="form-control" name="imageone">
+                      </div>
+                      <div class="form-group">
+                        <label for="exampleInputPassword1"> para2 image</label>
+                        <input type="file" class="form-control" name="imagetwo">
+                      </div>
+                      <div class="form-group">
+                        <label for="exampleInputPassword1">para3image</label>
+                        <input type="file" class="form-control" name="imagethree">
+                      </div>
+                      <div class="form-group">
+                        <label for="exampleInputPassword1">para3image</label>
+                        <input type="file" class="form-control" name="imagefour">
+                      </div>
+
+                      <button type="submit" class="btn btn-primary">Add Banner</button>
+                    </form>
+
+                  </div>
+
+                </div>
+
+                <!-- /.row -->
+              </div><!--/. container-fluid -->
+            </section>
+            <!-- /.content -->
+          </div>
+          <!-- /.content-wrapper -->
+
+          <!-- Control Sidebar -->
+          <aside class="control-sidebar control-sidebar-dark">
+            <!-- Control sidebar content goes here -->
+          </aside>
+          <!-- /.control-sidebar -->
+
+          <!-- Main Footer -->
+          <%- include('../layout/footer.ejs')%>

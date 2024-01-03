@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<%- include('../common/head.ejs')%>
+<!-- Add these lines to include Bootstrap CSS -->
+
+
+</head>
+  <style>
+    /* General styles */
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    /* Styles for the hero section */
+    #hero-section {
+      background: linear-gradient(rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.8)), url('/hero-background.jpg') center/cover no-repeat;
+      text-align: center;
+      padding: 100px 0;
+      color: #333;
+    }
+
+    #hero-section h1 {
+      font-size: 36px;
+      margin-bottom: 20px;
+    }
+
+    #hero-section p {
+      font-size: 18px;
+      margin-bottom: 30px;
+    }
+
+    /* Styles for blog content */
+    .mu-blog-single-img img {
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .mu-blog-caption {
+      font-size: 18px;
+      line-height: 1.5;
+      color: #333;
+      padding: 10px;
+      margin: 0;
+      transition: background-color 0.3s ease;
+    }
+
+    .mu-blog-caption:hover {
+      background-color: #f8f9fa;
+    }
+
+    .content {
+      margin: 20px auto;
+    }
+
+    .blog-paragraph {
+      font-size: 16px;
+      color: #333;
+    }
+
+    .related-post-title {
+      font-family: 'Times New Roman', Times, serif;
+      font-size: 24px;
+      color: #333;
+      font-weight: bold;
+      margin-bottom: 20px;
+    }
+
+    /* Styles for the comments section */
+    .mu-comments-area {
+      margin-top: 50px;
+    }
+
+    .reply-title {
+      font-size: 24px;
+      color: #333;
+      font-weight: bold;
+      margin-bottom: 20px;
+    }
+
+    /* Styles for the footer */
+    .footer {
+      background-color: #343a40;
+      color: #fff;
+      padding: 60px 0;
+    }
+
+    .footer h5 {
+      font-size: 18px;
+      margin-bottom: 20px;
+    }
+
+    .footer a {
+      color: #fff;
+      text-decoration: none;
+      display: block;
+      margin-bottom: 10px;
+    }
+
+    .footer a:hover {
+      color: #00B074;
+    }
+
+    /* Styles for related post images */
+    .mu-blog-single-item .mu-blog-single-img img.smaller-image {
+      max-width: 100px;
+      /* Adjust the maximum width as needed */
+      height: auto;
+    }
+
+    /* Styles for "Read More" link */
+    .mu-blog-description a.mu-read-more-btn {
+      color: #000;
+      font-weight: bold;
+      text-decoration: underline;
+      transition: color 0.3s ease;
+    }
+
+    .mu-blog-description a.mu-read-more-btn:hover {
+      color: #00B074;
+    }
+
+    .mu-course-content {
+      padding: 20px 0;
+      /* Adjust the top and bottom padding */
+    }
+    .owl-nav {
+    background-color:#00B074;
+    margin-top: 10%;
+  }
+
+  .owl-prev, .owl-next {
+    color: rgb(190, 19, 19);
+  }
+  </style>
+
+  <body>
+    <!-- Start scroll top button -->
+
+    <!-- End scroll top button -->
+
+    <!-- Start menu -->
+    <%- include('../common/nav.ejs')%>
+      <!-- End menu -->
+
+      <!-- Hero section -->
+      <section id="hero-section">
+        <div class="container">
+          <h1>Welcome to Our Blog</h1>
+          <p>Discover the latest insights, trends, and updates in the world of technology and software development.</p>
+          <!-- You can add a call-to-action button here -->
+        </div>
+      </section>
+      <!-- End Hero section -->
+
+      <!-- Page breadcrumb -->
+      <div id="mu-carousel" class="carousel slide" data-ride="carousel">
+        <!-- Carousel slides go here -->
+      </div>
+      <!-- End breadcrumb -->
+
+      <section id="mu-course-content" style="padding: 20px;" class="mu-course-content">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-12">
+              <div class="mu-course-content-area">
+                <div class="row">
+                  <div class="col-md-9">
+                    <!-- Start course content container -->
+                    <div class="mu-course-container mu-blog-single">
+                      <div class="row">
+                        <div class="col-md-12">
+                          <article class="mu-blog-single-item">
+                            <figure class="mu-blog-single-img position-relative">
+                              <!-- Blog image with rounded corners and box shadow -->
+                              <a href="#">
+                                <img alt="img" src="/<%= post?.image %>" class="img-fluid rounded smaller-image"
+                                  style="width: 100%; max-width: 800px; height: auto; max-height: 400px;">
+                              </a>
+                              <figcaption class="mu-blog-caption">
+                                <h3 class="post-title"><a href="#">
+                                    <%= post?.title %>
+                                  </a></h3>
+                                <div class="meta-info">
+                                  <span class="author">by Admin</span>
+                                  <span class="date">on <%= post?.publishedDate?.toLocaleString() %></span>
+                                  <span class="comments"><i class="fa fa-comments-o"></i>
+                                    <%= post?.commentIds?.length %>
+                                  </span>
+                                </div>
+                              </figcaption>
+                            </figure>
+
+                            <div class="content">
+                              <!-- Blog content paragraph -->
+                              <p class="blog-paragraph">
+                                <%= post.description %>
+                              </p>
+                            </div>
+
+                            <div class="interactions mt-4">
+                              <div class="like-section">
+                                <!-- Like icon and count -->
+                                <img src="/like.png" id="forLike" alt="Like" class="like-icon">
+                                <span class="like-count font-weight-bolder">
+                                  <%= post?.like %> Likes
+                                </span>
+                              </div>
+                              <!-- Add other interaction elements if needed (e.g., share, save, etc.) -->
+                            </div>
+
+                            <!-- Ajax script for updating like count -->
+                            <script>
+                              $(document).ready(function () {
+                                $("#forLike").on("click", function (element) {
+                                  $.ajax({
+                                    url: "/add-like/<%= post?.id %>",
+                                    method: "patch",
+                                    success: function (data) {
+                                      $(".like-count").text(data.like);
+                                    },
+                                    error: function (error) {
+                                      console.log(error);
+                                    },
+                                  });
+                                });
+                              });
+                            </script>
+
+                          </article>
+                        </div>
+                      </div>
+                    </div>
+                    <!-- End course content container -->
+                    <div class="row">
+                      <div class="col-md-12">
+                        <div class="mu-comments-area">
+                          <!-- Start Comment Form -->
+                          <div class="row">
+                            <div class="col-md-12">
+                              <div id="respond">
+                                <h3 class="reply-title" id="commentSection">Leave a Comment</h3>
+
+                                <!-- Display success, error, and warning messages -->
+                                <% if (flashMsg && flashMsg?.success?.length> 0) { %>
+                                  <div class="alert alert-success mx-3" role="alert">
+                                    <%= flashMsg.success %>
+                                  </div>
+                                  <% } %>
+
+                                    <% if (flashMsg && flashMsg?.error?.length> 0) { %>
+                                      <div class="alert alert-danger mx-3" role="alert">
+                                        <%= flashMsg.error %>
+                                      </div>
+                                      <% } %>
+
+                                        <% if (flashMsg && flashMsg?.msg?.length> 0) { %>
+                                          <div class="alert alert-warning mx-3" role="alert">
+                                            <%= flashMsg.msg %>
+                                          </div>
+                                          <% } %>
+
+                                            <!-- Comment form -->
+                                            <form id="commentform" action="/comment/<%= post?._id %>" method="post">
+                                              <div class="form-group">
+                                                <textarea class="form-control" required="required" aria-required="true"
+                                                  rows="8" cols="35" name="comment"
+                                                  placeholder="Enter your comment here..."
+                                                  style="height: 100px;"></textarea>
+                                              </div>
+                                              <br>
+                                              <div class="text-center">
+                                                <button class="btn btn-primary" type="submit">Send</button>
+                                              </div>
+                                            </form>
+                              </div>
+                            </div>
+                          </div>
+                          <!-- End Comment Form -->
+
+                          <!-- Start Comments List -->
+                          <div class="comments mt-4">
+                            <ul class="commentlist">
+                              <!-- Display comments or a message if no comments exist -->
+                              <% if (comments && comments.length> 0) { %>
+                                <% for (let comment of comments) { %>
+                                  <li>
+                                    <div class="media">
+                                      <div class="media-body">
+                                        <h5>
+                                          <%= comment.userName %>
+                                        </h5>
+
+                                        <p><b>
+                                            <%= comment?.body %>
+                                          </b>
+                                        </p>
+                                        <span class="comments-date">
+                                          <%= comment?.createdAt ? comment?.createdAt?.toLocaleString()
+                                            : 'Posted on 12th June, 2016' %>
+                                        </span>
+                                      </div>
+                                    </div>
+                                  </li>
+                                  <% } %>
+                                    <% } else { %>
+                                      <li>
+                                        <p>No comments yet. Be the first to comment!</p>
+                                      </li>
+                                      <% } %>
+                            </ul>
+                            <!-- Add comments pagination if needed -->
+                          </div>
+                          <!-- End Comments List -->
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- Start related post section -->
+                  
+              <hr style="height: 4px; color: #00B074;">
+              <h1 class="text-center mb-5 wow fadeInUp" style="color: #00B074;" data-wow-delay="0.1s">Related Blogs</h1>
+
+            <!-- //related blogs -->
+
+         
+            <div class="container-fluid p-0">
+            
+              <div class="owl-carousel header-carousel position-relative" style=" height: 340px;">
+                <% if (relatedPost && relatedPost.length > 0) { %>
+                  <% for (let related of relatedPost) { %>
+                    <div class="owl-carousel-item position-relative"  >
+                      <img src="/<%= related?.image %>" alt="" style="width: 270px; height: 310px;">
+                      <div class="position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center">
+                        <div class="container">
+                          <div class="row justify-content-start">
+                            <div class="col-10 col-lg-8" style="margin-left: 30%; margin-top: 2%;">
+                              <h3 class="text-black animated slideInDown mb-4">
+                                <%= related?.title %>
+                              </h3>
+                              <p class="fs-5 fw-medium text-black mb-4 pb-2">
+                                <%= related?.subTitle %>
+                              </p>
+                              <span><i class="fa fa-message-o">comments:</i>
+
+                                <%= related?.commentIds?.length %>
+                              </span>
+                        
+                              <p class="mb-0">
+                                <%= related?.publishedDate?.toLocaleString() %>
+                              </p>
+                              <br>
+                              <a href="/post/<%= related?._id %>"
+                                class="btn btn-primary py-md-3 px-md-5 me-3 animated slideInLeft">Full Blog</a>
+                            
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  <% } %>
+                <% } %>
+              </div>
+            </div>
+            
+            
+            
+
+
+              <br><br>
+
+
+            </div>
+          </div>
+        </div>
+
+      </section>
+
+    
+      <br>
+      <!-- Start footer -->
+      <%- include('../common/footer.ejs')%>
+  </body>
+
+</html>
